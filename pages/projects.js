@@ -8,13 +8,13 @@ export default function Projects({ projects }) {
     <Layout>
       <div className="flex flex-col items-center justify-center min-h-screen px-3 mb-10">
         <Head>
-          <title>빡코딩 포트폴리오</title>
-          <meta name="description" content="오늘도 빡코딩!" />
+          <title>덕구 포트폴리오</title>
+          <meta name="description" content="덕구 빡코딩!" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        {/* <h1 className="text-4xl font-bold sm:text-6xl">
-          총 프로젝트 :<span className="pl-4 text-blue-500">{projects.results.length}</span>
-        </h1> */}
+        <h1 className="text-4xl font-bold sm:text-6xl">
+          {/* 총 프로젝트 :<span className="pl-4 text-blue-500">{projects.results.length}</span> */}
+        </h1>
 
         {/* <div className="grid grid-cols-1 gap-8 p-12 m-4 md:grid-cols-2">
           {projects.results.map(aProject => (
@@ -37,7 +37,7 @@ export async function getServerSideProps() {
       Accept: "application/json",
       "Notion-Version": "2022-02-22",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${TOKEN}`,
+      Authorization: `Bearer secret_cyQaAgk23sFn8CdWjJFDoN76JgbdVYKgSxy4CV8Vaa6`,
     },
     body: JSON.stringify({
       sorts: [
@@ -50,9 +50,10 @@ export async function getServerSideProps() {
     }),
   };
 
-  const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, options);
+  const res = await fetch(`https://api.notion.com/v1/databases/7542bcfaf4344ad2ad7adc5f51554114/query`, options);
 
   const projects = await res.json();
+  console.log({ projects });
 
   //   const projectNames =
   //     projects.results &&
